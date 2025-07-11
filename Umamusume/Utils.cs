@@ -50,7 +50,7 @@ namespace Umamusume
         public static byte[] MakeMd5(string content)
         {
             using MD5 md5 = MD5.Create();
-            return md5.ComputeHash(Encoding.UTF8.GetBytes(content + "r!I@mt8e5i="));
+            return md5.ComputeHash(Encoding.UTF8.GetBytes(content + "co!=Y;(UQCGxJ_n82"));
         }
 
         [ThreadStatic]
