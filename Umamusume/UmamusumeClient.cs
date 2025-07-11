@@ -36,9 +36,9 @@ namespace Umamusume
 
     public class UmamusumeClient
     {
-        public const bool dbg = false;
-        private static string header;// = "ayDiq2wxEzD3Ydc3zj8wJXUIUGZe6li2Ny+NL1dQHrOkm+SczQccvfO8S1xFXOpCL3d2Og==";
-        private static string appver;// = "1.2.10";
+        public const bool dbg = true;
+        private static string header;
+        private static string appver;
         static UmamusumeClient()
         {
             var json = JObject.Parse(File.ReadAllText("env.json"));
@@ -46,8 +46,8 @@ namespace Umamusume
             appver = json.Value<string>("appver");
         }
 
-        private const string apiroot = "https://api-umamusume.cygames.jp/umamusume";
-        private const string proxy_server = "127.0.0.1:1080";
+        private const string apiroot = "https://api.games.umamusume.com/umamusume";
+        private const string proxy_server = "http://localhost:8888";
 
         public static int _reqnum = 0;
 
@@ -107,11 +107,11 @@ namespace Umamusume
             client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/x-msgpack");
             client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "*/*");
             client.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Encoding", "deflate, gzip");
-            client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "UnityPlayer/2019.4.21f1 (UnityWebRequest/1.0, libcurl/7.52.0-DEV)");
-            client.DefaultRequestHeaders.TryAddWithoutValidation("X-Unity-Version", "2019.4.21f1");
+            client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "UnityPlayer/2019.4.31f1 (UnityWebRequest/1.0, libcurl/7.75.0-DEV)");
+            client.DefaultRequestHeaders.TryAddWithoutValidation("X-Unity-Version", "2019.4.31f1");
             client.DefaultRequestHeaders.TryAddWithoutValidation("APP-VER", appver);
             client.DefaultRequestHeaders.TryAddWithoutValidation("RES-VER", "");
-            client.DefaultRequestHeaders.TryAddWithoutValidation("Device", "2");
+            client.DefaultRequestHeaders.TryAddWithoutValidation("Device", "4"); // should be 4 for computer but erm...
         }
 
         public UmamusumeClient(Account account, ICryptHandler handler)
@@ -121,7 +121,7 @@ namespace Umamusume
             client.DefaultRequestHeaders.Clear();
             client.Timeout = new TimeSpan(0, 0, 30);
             AddCommonHeaders(client);
-            ResVer = "10002000";
+            ResVer = "10000500";
         }
 
         private void PreRequestHeaders()

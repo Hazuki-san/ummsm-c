@@ -78,8 +78,10 @@ namespace Umamusume
             {
                 client.ResetAccount();
                 client.Signup();
+                
                 //var client = new UmamusumeClient(JsonConvert.DeserializeObject<Account>(File.ReadAllText("account.json")));
                 //File.WriteAllText("account.json", JsonConvert.SerializeObject(client.Account));
+                
                 client.StartSession();
                 client.Login();
                 client.RetryRequest(new TutorialSkipRequest());
@@ -134,7 +136,7 @@ namespace Umamusume
 
         private static void Test()
         {
-            Console.WriteLine(Convert.ToBase64String("6b 20 e2 ab 6c 31 13 30 f7 61 d7 37 ce 3f 30 25 75 08 50 66 5e ea 58 b6 37 2f 8d 2f 57 50 1e b3 73 29 cb ca cd 42 3a a2 d5 97 b2 66 a7 48 9d 46 a8 73 72 b9".Split(" ").Select(i => byte.Parse(i, System.Globalization.NumberStyles.HexNumber)).ToArray()));
+            Console.WriteLine(Convert.ToBase64String("6B 20 E2 AB 6C 31 13 30 F7 61 D7 37 CE 3F 30 25 75 08 50 66 5E EA 58 B6 37 2F 8D 2F 57 50 1E B3 44 BD B7 27 0A 90 67 F5 B6 3C D6 1F 15 2C FB 98 6C BF BF 7A".Split(" ").Select(i => byte.Parse(i, System.Globalization.NumberStyles.HexNumber)).ToArray()));
             UmamusumeClient client = new (new Account
             {
                 //Udid = Guid.Parse("f3ba2056-6d23-c848-6587-6dcabcd74f73")

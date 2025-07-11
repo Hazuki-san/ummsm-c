@@ -118,8 +118,8 @@ namespace PCRAgent.Controllers
             client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/x-msgpack");
             client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "*/*");
             client.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Encoding", "deflate, gzip");
-            client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "UnityPlayer/2019.4.21f1 (UnityWebRequest/1.0, libcurl/7.52.0-DEV)");
-            client.DefaultRequestHeaders.TryAddWithoutValidation("X-Unity-Version", "2019.4.21f1");
+            client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "UnityPlayer/2019.4.21f1 (UnityWebRequest/1.0, libcurl/7.55.0-DEV)");
+            client.DefaultRequestHeaders.TryAddWithoutValidation("X-Unity-Version", "2019.4.31f1");
             client.DefaultRequestHeaders.TryAddWithoutValidation("APP-VER", "1.7.1");
             client.DefaultRequestHeaders.TryAddWithoutValidation("RES-VER", "");
             client.DefaultRequestHeaders.TryAddWithoutValidation("Device", "2");
@@ -134,7 +134,7 @@ namespace PCRAgent.Controllers
             env.UpdateInfo(RequestEnvironment.CreateDefault(), new Account { ViewerId = 0 });
             var packed = JToken.FromObject(env);
             var sid = Utils.Bin2Hex(Utils.MakeMd5($"0{guid}"));
-            var header = Convert.FromBase64String("ayDiq2wxEzD3Ydc3zj8wJXUIUGZe6li2Ny+NL1dQHrNzKcvKzUI6otWXsmanSJ1GqHNyuQ==");
+            var header = Convert.FromBase64String("ayDiq2wxEzD3Ydc3zj8wJXUIUGZe6li2Ny+NL1dQHrNEvbcnCpBn9bY81h8VLPuYbL+/eg==");
             var req = new byte[] { 116, 0, 0, 0 }.Concat(header).Concat(Utils.Hex2bin(sid)).Concat(Utils.Hex2bin(guid.ToString().Replace("-", "")))
                 .Concat(Utils.GenRandomBytes(32)).Concat(Pack(packed)).ToArray();
             client.DefaultRequestHeaders.TryAddWithoutValidation("SID", sid);
