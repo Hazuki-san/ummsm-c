@@ -165,7 +165,7 @@ namespace Umamusume
         private static void Main(string[] args)
         {
             Test();
-            Console.Write("线程数:");
+            Console.Write("Thread Count:");
             var tcount = int.Parse(Console.ReadLine());
 
             ThreadPool.SetMaxThreads(512, 512);
