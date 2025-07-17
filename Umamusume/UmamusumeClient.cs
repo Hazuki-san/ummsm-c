@@ -178,11 +178,9 @@ namespace Umamusume
 
         private TResult Request<TResult>(RequestBase<TResult> request) where TResult : ResponseCommon
         {
-            //var arr = CommonHeader.Concat(Utils.Hex2bin(Account.SessionId)).Concat(Account.udid.ToString())
             IEnumerable<byte> head = Convert.FromBase64String(header)
                 .Concat(Utils.Hex2bin(SessionId))
                 .Concat(Utils.Hex2bin(Account.Udid.ToString().Replace("-", "")))
-//                .Concat(Convert.FromBase64String("BWC0kRAsY0721Dsu5yG5xzlrCc4KikZRMKhOZTY8tDY="));
                 .Concat(Utils.GenRandomBytes(32));
 
             if (Account.Authkey != null) head = head.Concat(Convert.FromBase64String(Account.Authkey));
